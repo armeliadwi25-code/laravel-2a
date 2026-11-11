@@ -1,0 +1,73 @@
+/* gaya dasar halaman */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff0f5;
+    margin: 0;
+    padding: 30px;
+}
+
+/* judul halaman */
+h1 {
+    text-align: center;
+    color: #d63384;
+}
+
+h3 {
+    color: #c2185b;
+}
+
+/* form dan konten di tengah */
+form {
+    text-align: center;
+}
+
+/* kolom input */
+input[type="text"] {
+    padding: 8px;
+    border: 2px solid #f8bbd0;
+    border-radius: 8px;
+    width: 80px;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #ec407a;
+}
+
+/* tombol */
+button {
+    background-color: #ec407a;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #f48fb1;
+    color: #880e4f;
+}
+
+/* tabel mahasiswa */
+table {
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(236, 64, 122, 0.25);
+}
+
+th {
+    background-color: #ec407a;
+    color: white;
+}
+
+th, td {
+    padding: 10px 20px;
+    border: 1px solid #f8bbd0;
+}
+
+/* baris tabel selang-seling */
+tr:nth-child(even) td {
+    background-color: #fce4ec;
+}
