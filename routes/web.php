@@ -9,6 +9,8 @@ use App\Http\Controllers\Web;
 use App\Http\Controllers\KalkulatorController;
 
 
+
+
 Route::get('/', function () {
 
     // return view("wellcome);
