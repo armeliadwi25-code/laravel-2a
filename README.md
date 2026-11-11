@@ -10,8 +10,6 @@ Project latihan dari **Modul Praktikum Framework Laravel** (penyusun Rudy Eko Pr
 | **Repository** | https://github.com/armeliadwi25-code/laravel-2a |
 | **Framework** | Laravel 13 (PHP 8.3 ke atas) |
 
-> Modul ditulis memakai Laravel 8, sedangkan project ini memakai Laravel 13. Konsep route, controller, dan view yang dipakai tetap sama.
-
 ## Materi yang Dikerjakan
 
 1. Route dan Controller
@@ -36,32 +34,64 @@ Project latihan dari **Modul Praktikum Framework Laravel** (penyusun Rudy Eko Pr
 | GET | `/daftar/mahasiswa` | `MahasiswaController@index`, tabel mahasiswa |
 
 ## Hasil Tugas
+## Deskripsi Aplikasi
+
+Aplikasi yang dibuat terdiri dari empat halaman web sederhana. Semuanya berjalan lokal dengan `php artisan serve`.
+
+### 1. Kalkulator Perkalian
+Halaman untuk mengalikan dua angka.
+- Pengguna mengisi dua kolom angka, lalu menekan tombol **HITUNG**.
+- Data dikirim lewat form (metode POST) ke `KalkulatorController@proses`.
+- Controller mengalikan kedua angka, lalu hasilnya ditampilkan kembali di halaman yang sama.
+- Angka yang sudah diisi tetap muncul di kolom setelah dihitung.
+
+### 2. Kalkulator Luas Segitiga
+Halaman untuk menghitung luas segitiga.
+- Pengguna mengisi **alas** dan **tinggi**, lalu menekan **HITUNG**.
+- Controller menghitung dengan rumus `1/2 x alas x tinggi`.
+- Hasil ditampilkan sebagai teks **Luas = ...** di bawah tombol.
+- Memakai controller yang sama dengan kalkulator perkalian (`KalkulatorController`).
+
+### 3. Daftar Mahasiswa
+Halaman yang menampilkan data mahasiswa dalam bentuk tabel (Nama, Alamat, Gender).
+- Data disimpan sebagai array di `MahasiswaController@index`, berisi 4 mahasiswa: Anton, Budi, Ani, dan Sinta.
+- View menampilkan tiap baris tabel dengan perulangan `@foreach`.
+- Tabel memakai warna header pink dan baris selang-seling.
+
+### 4. Halaman Pendukung
+Halaman latihan dasar route dan controller:
+- `/web` menampilkan teks dari controller `Web`.
+- `/profil/{nama}` menampilkan nama yang diketik di URL, misalnya `/profil/armelia`.
+- `/biodata` menampilkan biodata (nama dan alamat) dari controller ke view `biodata`.
+
+### Tampilan
+Semua halaman memakai satu file CSS (`public/css/style.css`) bertema pink: latar pink muda, judul pink tua, tombol bulat, dan tabel dengan header
 
 ### 1. Daftar Mahasiswa (`/daftar/mahasiswa`)
 
 Data mahasiswa dikirim dari `MahasiswaController` ke view `mahasiswa.blade.php`, lalu ditampilkan dengan `@foreach`.
 
-![Daftar Mahasiswa](docs/screenshots/daftar-mahasiswa.png)
+![Daftar Mahasiswa](screenshots/daftar-mahasiswa.png)
 
 ### 2. Kalkulator Sederhana (`/kalkulator`)
 
 Tampilan awal form perkalian.
 
-![Kalkulator awal](docs/screenshots/kalkulator.png)
+![Kalkulator awal](screenshots/kalkulator.png)
 
 Setelah tombol **HITUNG** ditekan (`/kalkulator/proses`), contoh 5 x 8 = 40.
 
-![Kalkulator hasil](docs/screenshots/kalkulator-proses.png)
+![Kalkulator hasil](screenshots/kalkulator-proses.png)
 
 ### 3. Luas Segitiga (`/kalkulator/segitiga`)
 
 Tampilan awal form luas segitiga.
 
-![Segitiga awal](docs/screenshots/segitiga.png)
+![Segitiga awal](screenshots/segitiga.png)
 
 Rumus yang dipakai: luas = 1/2 x alas x tinggi. Contoh alas 6 dan tinggi 30 menghasilkan luas 90.
 
-![Segitiga hasil](docs/screenshots/segitiga-hasil.png)
+![Segitiga hasil](screenshots/segitiga-hasil.png)
 
 ## Struktur File yang Dibuat
 
