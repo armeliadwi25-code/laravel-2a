@@ -8,7 +8,8 @@ use App\Http\Controllers\Web;
 //import Controller Kalkulator diatas
 use App\Http\Controllers\KalkulatorController;
 
-
+//import Controller Mahasiswa agar bisa dipakai di route
+use App\Http\Controllers\MahasiswaController;
 
 
 Route::get('/', function () {
@@ -41,3 +42,7 @@ Route::get('/biodata', [Web::class, 'biodata']);
 Route::get('/kalkulator',[KalkulatorController::class, 'home']);
 //route untuk proses perhitungan
 Route::post('/kalkulator/proses',[KalkulatorController::class, 'proses']);
+
+//route untuk menampilkan daftar mahasiswa
+//jika URL /daftar/mahasiswa dibuka, jalankan fungsi index() di MahasiswaController
+Route::get('/daftar/mahasiswa', [MahasiswaController::class, 'index']);
