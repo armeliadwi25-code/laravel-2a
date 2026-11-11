@@ -1,3 +1,109 @@
+# Tugas Praktikum Framework Laravel
+
+Project latihan dari **Modul Praktikum Framework Laravel** (penyusun Rudy Eko Prasetya, S.Kom).
+
+| | |
+|---|---|
+| **Nama** | Armelia Dwi Prastyawati |
+| **Asal** | Nganjuk |
+| **GitHub** | [armeliadwi25-code](https://github.com/armeliadwi25-code) |
+| **Repository** | https://github.com/armeliadwi25-code/laravel-2a |
+| **Framework** | Laravel 13 (PHP 8.3 ke atas) |
+
+> Modul ditulis memakai Laravel 8, sedangkan project ini memakai Laravel 13. Konsep route, controller, dan view yang dipakai tetap sama.
+
+## Materi yang Dikerjakan
+
+1. Route dan Controller
+2. Parsing data ke View (Blade)
+3. Latihan MahasiswaController
+4. Latihan kalkulator luas segitiga
+5. Latihan CSS (tema pink)
+
+## Daftar Route
+
+| Method | URL | Tujuan |
+|---|---|---|
+| GET | `/` | Teks sambutan (closure) |
+| GET | `/about` | Halaman About (closure) |
+| GET | `/web` | `Web@home` |
+| GET | `/profil/{nama}` | `Web@profil`, menerima nama dari URL |
+| GET | `/biodata` | `Web@biodata`, menampilkan view `biodata` |
+| GET | `/kalkulator` | `KalkulatorController@home`, form perkalian |
+| POST | `/kalkulator/proses` | `KalkulatorController@proses`, hitung perkalian |
+| GET | `/kalkulator/segitiga` | `KalkulatorController@segitiga`, form luas segitiga |
+| POST | `/kalkulator/segitiga` | `KalkulatorController@hitungSegitiga`, hitung luas |
+| GET | `/daftar/mahasiswa` | `MahasiswaController@index`, tabel mahasiswa |
+
+## Hasil Tugas
+
+### 1. Daftar Mahasiswa (`/daftar/mahasiswa`)
+
+Data mahasiswa dikirim dari `MahasiswaController` ke view `mahasiswa.blade.php`, lalu ditampilkan dengan `@foreach`.
+
+![Daftar Mahasiswa](docs/screenshots/daftar-mahasiswa.png)
+
+### 2. Kalkulator Sederhana (`/kalkulator`)
+
+Tampilan awal form perkalian.
+
+![Kalkulator awal](docs/screenshots/kalkulator.png)
+
+Setelah tombol **HITUNG** ditekan (`/kalkulator/proses`), contoh 5 x 8 = 40.
+
+![Kalkulator hasil](docs/screenshots/kalkulator-proses.png)
+
+### 3. Luas Segitiga (`/kalkulator/segitiga`)
+
+Tampilan awal form luas segitiga.
+
+![Segitiga awal](docs/screenshots/segitiga.png)
+
+Rumus yang dipakai: luas = 1/2 x alas x tinggi. Contoh alas 6 dan tinggi 30 menghasilkan luas 90.
+
+![Segitiga hasil](docs/screenshots/segitiga-hasil.png)
+
+## Struktur File yang Dibuat
+
+```
+app/Http/Controllers/
+  Web.php
+  KalkulatorController.php
+  MahasiswaController.php
+resources/views/
+  biodata.blade.php
+  kalkulator.blade.php
+  segitiga.blade.php
+  mahasiswa.blade.php
+routes/web.php
+public/css/style.css
+docs/screenshots/
+```
+
+## Cara Menjalankan
+
+1. Clone repository:
+   ```bash
+   git clone https://github.com/armeliadwi25-code/laravel-2a.git
+   cd laravel-2a
+   ```
+2. Pasang dependency:
+   ```bash
+   composer install
+   ```
+3. Salin file environment lalu buat key (Windows):
+   ```bash
+   copy .env.example .env
+   php artisan key:generate
+   ```
+4. Jalankan server:
+   ```bash
+   php artisan serve
+   ```
+5. Buka `http://127.0.0.1:8000` di browser.
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
