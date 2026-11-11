@@ -46,3 +46,8 @@ Route::post('/kalkulator/proses',[KalkulatorController::class, 'proses']);
 //route untuk menampilkan daftar mahasiswa
 //jika URL /daftar/mahasiswa dibuka, jalankan fungsi index() di MahasiswaController
 Route::get('/daftar/mahasiswa', [MahasiswaController::class, 'index']);
+
+//route untuk menampilkan form luas segitiga
+Route::get('/kalkulator/segitiga', [KalkulatorController::class, 'segitiga']);
+//route untuk proses perhitungan luas segitiga
+Route::post('/kalkulator/segitiga', [KalkulatorController::class, 'hitungSegitiga']);
