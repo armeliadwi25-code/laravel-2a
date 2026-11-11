@@ -10,6 +10,18 @@ Project latihan dari **Modul Praktikum Framework Laravel** (penyusun Rudy Eko Pr
 | **Repository** | https://github.com/armeliadwi25-code/laravel-2a |
 | **Framework** | Laravel 13 (PHP 8.3 ke atas) |
 
+## Deskripsi
+
+Project ini adalah hasil praktikum Framework Laravel yang mengikuti Modul Praktikum Framework Laravel. Tujuannya mempelajari dasar pembuatan aplikasi web dengan Laravel yang menerapkan konsep **MVC (Model-View-Controller)**.
+
+Yang dipelajari dan dipraktikkan:
+
+- **Route:** mengatur URL yang bisa diakses, termasuk route dengan parameter (`/profil/{nama}`) dan route GET/POST.
+- **Controller:** memisahkan logika program dari route (`Web`, `KalkulatorController`, `MahasiswaController`).
+- **View (Blade):** menampilkan halaman HTML dengan data dari controller, memakai `{{ }}`, `@foreach`, dan `@csrf`.
+- **Parsing data:** mengirim data dari controller ke view dan menangkap input form lewat `Request`.
+- **CSS:** mempercantik tampilan dengan tema pink dari `public/css/style.css`.
+
 ## Materi yang Dikerjakan
 
 1. Route dan Controller
@@ -33,7 +45,6 @@ Project latihan dari **Modul Praktikum Framework Laravel** (penyusun Rudy Eko Pr
 | POST | `/kalkulator/segitiga` | `KalkulatorController@hitungSegitiga`, hitung luas |
 | GET | `/daftar/mahasiswa` | `MahasiswaController@index`, tabel mahasiswa |
 
-## Hasil Tugas
 ## Deskripsi Aplikasi
 
 Aplikasi yang dibuat terdiri dari empat halaman web sederhana. Semuanya berjalan lokal dengan `php artisan serve`.
@@ -65,33 +76,35 @@ Halaman latihan dasar route dan controller:
 - `/biodata` menampilkan biodata (nama dan alamat) dari controller ke view `biodata`.
 
 ### Tampilan
-Semua halaman memakai satu file CSS (`public/css/style.css`) bertema pink: latar pink muda, judul pink tua, tombol bulat, dan tabel dengan header
+Semua halaman memakai satu file CSS (`public/css/style.css`) bertema pink: latar pink muda, judul pink tua, tombol bulat, dan tabel dengan header berwarna.
+
+## Hasil Tugas
 
 ### 1. Daftar Mahasiswa (`/daftar/mahasiswa`)
 
 Data mahasiswa dikirim dari `MahasiswaController` ke view `mahasiswa.blade.php`, lalu ditampilkan dengan `@foreach`.
 
-![Daftar Mahasiswa](screenshots/daftar-mahasiswa.png)
+![Daftar Mahasiswa](screenshot/daftar-mahasiswa.png)
 
 ### 2. Kalkulator Sederhana (`/kalkulator`)
 
 Tampilan awal form perkalian.
 
-![Kalkulator awal](screenshots/kalkulator.png)
+![Kalkulator awal](screenshot/kalkulator.png)
 
 Setelah tombol **HITUNG** ditekan (`/kalkulator/proses`), contoh 5 x 8 = 40.
 
-![Kalkulator hasil](screenshots/kalkulator-proses.png)
+![Kalkulator hasil](screenshot/kalkulator-proses.png)
 
 ### 3. Luas Segitiga (`/kalkulator/segitiga`)
 
 Tampilan awal form luas segitiga.
 
-![Segitiga awal](screenshots/segitiga.png)
+![Segitiga awal](screenshot/segitiga.png)
 
 Rumus yang dipakai: luas = 1/2 x alas x tinggi. Contoh alas 6 dan tinggi 30 menghasilkan luas 90.
 
-![Segitiga hasil](screenshots/segitiga-hasil.png)
+![Segitiga hasil](screenshot/segitiga-hasil.png)
 
 ## Struktur File yang Dibuat
 
@@ -107,7 +120,7 @@ resources/views/
   mahasiswa.blade.php
 routes/web.php
 public/css/style.css
-docs/screenshots/
+screenshot/
 ```
 
 ## Cara Menjalankan
