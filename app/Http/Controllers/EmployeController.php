@@ -13,4 +13,25 @@ class EmployeController extends Controller
         $data['employes'] = Employe::all();
         return view('tampil_data', $data);
     }
+
+    public function create() {
+        $data['judul'] = 'Tambah data Pegawai';
+        return view('tambah_data', $data);
+    }
+
+    public function store(Request $request) {
+        //ambil data di form
+        $employe = new Employe;
+
+        $employe->nama = $request->nama;
+        $employe->alamat = $request->alamat;
+        $employe->gender = $request->gender;
+        $employe->gaji = $request->gaji;
+
+        //simpan dalam database
+        $employe->save();
+
+        //jika berhasil kembali ke tampil data
+        return redirect('/employe');
+    }
 }
