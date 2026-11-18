@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>{{$judul}}</h1>
+<p align="center"><a href="/employe/create"><button>+ Tambah Data</button></a></p>
 
 <table border="1" align="center">
     <tr>
