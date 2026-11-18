@@ -11,6 +11,9 @@ use App\Http\Controllers\KalkulatorController;
 //import Controller Mahasiswa agar bisa dipakai di route
 use App\Http\Controllers\MahasiswaController;
 
+//import controller EmployeController
+use App\Http\Controllers\EmployeController;
+
 
 Route::get('/', function () {
 
@@ -60,3 +63,6 @@ Route::get('/dashboard',[DashboardController::class, 'home']);
 
 // route ke controller Dashboard untuk menampilkan gallery
 Route::get('/gallery', [DashboardController::class, 'gallery']);
+
+//route untuk menampilkan data pegawai
+Route::get('/employe', [EmployeController::class, 'index']);
