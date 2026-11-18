@@ -57,3 +57,6 @@ use App\Http\Controllers\DashboardController;
 //....
 //route ke controller Dashboard
 Route::get('/dashboard',[DashboardController::class, 'home']);
+
+// route ke controller Dashboard untuk menampilkan gallery
+Route::get('/gallery', [DashboardController::class, 'gallery']);
