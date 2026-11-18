@@ -7,33 +7,23 @@
 </head>
 <body>
 
-<!-- membuat container -->
+    <!-- membuat container -->
 <div class="container">
     <!-- header -->
-    <div class="header">
-        <h1 class="judul">Welcome To My Web</h1>
-    </div>
-    <div class="banner"></div>
+    @include('template/header')
     <!-- header -->
 
     <div class="isi">
         <!-- sidebar -->
-        <div class="sidebar">
-            <ul class="nav">
-                <li><a href="/dashboard">Home</a></li>
-                <li><a href="/gallery">Gallery</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-        </div>
+        @include('template/sidebar')
         <!-- sidebar -->
-
+        
         <!-- content -->
         <div class="content">
             @yield('content')
         </div>
         <!-- content -->
+        </div>
     </div>
-</div>
-
 </body>
 </html>
