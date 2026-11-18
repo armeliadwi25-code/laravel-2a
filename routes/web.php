@@ -66,3 +66,9 @@ Route::get('/gallery', [DashboardController::class, 'gallery']);
 
 //route untuk menampilkan data pegawai
 Route::get('/employe', [EmployeController::class, 'index']);
+
+//route form tambah data
+Route::get('/employe/create', [EmployeController::class, 'create']);
+
+//route proses simpan data
+Route::post('/employe/store', [EmployeController::class, 'store']);
