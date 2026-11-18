@@ -72,3 +72,9 @@ Route::get('/employe/create', [EmployeController::class, 'create']);
 
 //route proses simpan data
 Route::post('/employe/store', [EmployeController::class, 'store']);
+
+//route form edit data
+Route::get('/employe/edit/{employe}', [EmployeController::class, 'show']);
+
+//route proses update data
+Route::put('/employe/{employe}', [EmployeController::class, 'update']);
