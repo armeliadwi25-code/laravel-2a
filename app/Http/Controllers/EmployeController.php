@@ -57,4 +57,15 @@ class EmployeController extends Controller
         //kembali ke tabel utama
         return redirect('/employe');
     }
+
+    public function destroy(Employe $employe) {
+        //cari data yang akan dihapus
+        $employe = Employe::find($employe->id);
+
+        //hapus data dari database
+        $employe->delete();
+
+        //kembali ke tabel utama
+        return redirect('/employe');
+    }
 }
