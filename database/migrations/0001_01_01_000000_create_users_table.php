@@ -12,12 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+            //untuk primary key id auto increment
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            //membuat field nama tipe varchar(100)
+            $table->string('nama', 100);
+            //membuat field email varchar(100) unik
+            $table->string('email', 100)->unique();
+            //membuat field password tipe varchar(100)
+            $table->string('password', 100);
+            //membuat field foto tipe tinytext
+            $table->tinyText('foto')->nullable();
+            //membuat role tipe enum('admin','user')
+            $table->enum('role', ['admin', 'user']);
+            //membuat field created_at dan updated_at tipe timestamp
             $table->timestamps();
         });
 
