@@ -78,3 +78,6 @@ Route::get('/employe/edit/{employe}', [EmployeController::class, 'show']);
 
 //route proses update data
 Route::put('/employe/{employe}', [EmployeController::class, 'update']);
+
+//route hapus data
+Route::delete('/employe/{employe}', [EmployeController::class, 'destroy']);
