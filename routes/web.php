@@ -15,6 +15,9 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\EmployeController;
 
 
+//load controller
+use App\Http\Controllers\AuthController;
+
 //agar langsung masuk login
 Route::get('/', function () {
     return view('login');
@@ -80,3 +83,6 @@ Route::put('/employe/{employe}', [EmployeController::class, 'update']);
 
 //route hapus data
 Route::delete('/employe/{employe}', [EmployeController::class, 'destroy']);
+
+//route proses login
+Route::post('/login', [AuthController::class, 'cek']);
