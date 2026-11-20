@@ -136,3 +136,25 @@ tr:nth-child(even) td {
     background-color: lightblue;
     color: navy;
 }
+
+/* ===== Perkecil tabel dan tombol di area konten ===== */
+.content table {
+    width: 100%;
+    font-size: 13px;
+}
+
+.content th,
+.content td {
+    padding: 6px 8px;
+}
+
+.content table button {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+}
+
+.content table form {
+    display: inline-block;
+    margin: 0;
+}
