@@ -15,10 +15,9 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\EmployeController;
 
 
+//agar langsung masuk login
 Route::get('/', function () {
-
-    // return view("wellcome);
-    return 'Halo Nama Ku adalah Laravel, Salam Kenal';
+    return view('login');
 });
 
 // route baru
