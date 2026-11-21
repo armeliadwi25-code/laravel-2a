@@ -86,3 +86,6 @@ Route::delete('/employe/{employe}', [EmployeController::class, 'destroy']);
 
 //route proses login
 Route::post('/login', [AuthController::class, 'cek']);
+
+//route logout
+Route::get('/logout', [AuthController::class, 'logout']);
