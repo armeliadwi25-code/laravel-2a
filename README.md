@@ -1,6 +1,10 @@
-# Tugas Praktikum Framework Laravel
+# Praktikum Framework Laravel
 
-Project latihan dari **Modul Praktikum Framework Laravel** (penyusun Rudy Eko Prasetya, S.Kom).
+Tugas Pemrograman Web. Project ini adalah lanjutan praktikum modul Laravel (Sistem Templating sampai Autentikasi).
+
+- **Framework:** Laravel
+- **Database:** MySQL (XAMPP), database `company`
+- **Referensi:** Modul Praktikum Framework Laravel (Rudy Eko Prasetya, S.Kom)
 
 | | |
 |---|---|
@@ -9,6 +13,206 @@ Project latihan dari **Modul Praktikum Framework Laravel** (penyusun Rudy Eko Pr
 | **GitHub** | [armeliadwi25-code](https://github.com/armeliadwi25-code) |
 | **Repository** | https://github.com/armeliadwi25-code/laravel-2a |
 | **Framework** | Laravel 13 (PHP 8.3 ke atas) |
+
+## Cara Menjalankan
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
+
+Atur koneksi database di file `.env`:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=company
+DB_USERNAME=root
+DB_PASSWORD=
+SESSION_DRIVER=file
+QUEUE_CONNECTION=sync
+```
+
+Buat database `company` di phpMyAdmin, lalu jalankan:
+
+```bash
+php artisan migrate:fresh --seed
+php artisan serve
+```
+
+Buka `http://localhost:8000`.
+
+**Akun login (dari seeder):**
+
+| Email | Password |
+|---|---|
+| armelia@mail.com | 123456 |
+
+---
+
+## Daftar Bab
+
+1. [Sistem Templating](#1-sistem-templating)
+2. [CRUD Pegawai](#2-crud-pegawai)
+3. [Migration, Seeder dan Factory](#3-migration-seeder-dan-factory)
+4. [Autentikasi](#4-autentikasi)
+
+---
+
+## 1. Sistem Templating
+
+Layout halaman dipecah menjadi beberapa bagian memakai Blade: header, sidebar, dan content yang berubah sesuai halaman.
+
+**File utama**
+
+- `resources/views/dashboard.blade.php`: layout utama (`@include` dan `@yield`)
+- `resources/views/template/header.blade.php`
+- `resources/views/template/sidebar.blade.php`
+- `resources/views/home.blade.php` dan `gallery.blade.php`: isi halaman (`@extends` dan `@section`)
+- `app/Http/Controllers/DashboardController.php`
+- `public/css/style.css`
+
+**Route**
+
+| Method | URL | Fungsi |
+|---|---|---|
+| GET | `/dashboard` | Halaman Home |
+| GET | `/gallery` | Halaman Gallery |
+
+**Hasil**
+
+Halaman Home:
+
+![Halaman Home](screenshot/templating-home.png)
+
+Halaman Gallery:
+
+![Halaman Gallery](screenshot/templating-gallery.png)
+
+---
+
+## 2. CRUD Pegawai
+
+Aplikasi CRUD (Create, Read, Update, Delete) untuk tabel `employes` memakai Eloquent ORM.
+
+**File utama**
+
+- `app/Models/Employe.php`
+- `app/Http/Controllers/EmployeController.php` (fungsi `index`, `create`, `store`, `show`, `update`, `destroy`)
+- `resources/views/tampil_data.blade.php`
+- `resources/views/tambah_data.blade.php`
+- `resources/views/edit_data.blade.php`
+
+**Route**
+
+| Method | URL | Fungsi |
+|---|---|---|
+| GET | `/employe` | Tampil data |
+| GET | `/employe/create` | Form tambah data |
+| POST | `/employe/store` | Simpan data |
+| GET | `/employe/edit/{employe}` | Form edit data |
+| PUT | `/employe/{employe}` | Update data |
+| DELETE | `/employe/{employe}` | Hapus data |
+
+**Hasil**
+
+Tampil data:
+
+![Tampil Data](screenshot/crud-tampil.png)
+
+Tambah data:
+
+![Tambah Data](screenshot/crud-tambah.png)
+
+Ubah data:
+
+![Ubah Data](screenshot/crud-ubah.png)
+
+Hapus data (setelah data dihapus):
+
+![Hapus Data](screenshot/crud-hapus.png)
+
+---
+
+## 3. Migration, Seeder dan Factory
+
+Struktur tabel dibuat lewat file migration, dan data dummy diisi lewat seeder dengan library Faker.
+
+**File utama**
+
+- `database/migrations/0001_01_01_000000_create_users_table.php`: tabel `users` (nama, email, password, foto, role)
+- `database/migrations/xxxx_create_employes_table.php`: tabel `employes`
+- `database/seeders/UserSeeder.php`: 1 akun admin
+- `database/seeders/EmployeSeeder.php`: 10 data pegawai dummy (Faker)
+- `database/seeders/DatabaseSeeder.php`: memanggil semua seeder
+
+**Perintah**
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+**Hasil**
+
+Hasil perintah migrate dan seed di terminal:
+
+![Migrate Seed](screenshot/migration-terminal.png)
+
+Tabel di phpMyAdmin:
+
+![Tabel Database](screenshot/migration-phpmyadmin.png)
+
+Data pegawai hasil seeder:
+
+![Data Seeder](screenshot/seeder-employe.png)
+
+---
+
+## 4. Autentikasi
+
+Login memakai session, lalu halaman dilindungi dengan middleware `islogin`.
+
+**File utama**
+
+- `resources/views/login.blade.php`
+- `app/Http/Controllers/AuthController.php` (fungsi `cek` dan `logout`)
+- `app/Http/Middleware/IsLogin.php`
+- `bootstrap/app.php`: pendaftaran alias middleware `islogin`
+- `routes/web.php`: route yang dilindungi masuk ke `Route::group(['middleware' => 'islogin'])`
+
+**Route**
+
+| Method | URL | Fungsi |
+|---|---|---|
+| GET | `/` | Halaman login |
+| POST | `/login` | Proses login |
+| GET | `/logout` | Logout (harus login) |
+| GET | `/dashboard`, `/gallery`, `/employe/*` | Dilindungi middleware |
+
+**Hasil**
+
+Halaman login:
+
+![Halaman Login](screenshot/auth-login.png)
+
+Dashboard setelah login berhasil (menu Logout muncul di sidebar):
+
+![Dashboard Setelah Login](screenshot/auth-dashboard.png)
+
+Akses `/dashboard` setelah logout diarahkan kembali ke halaman login:
+
+![Halaman Terlindungi](screenshot/auth-middleware.png)
+
+---
+
+
+
+# Tugas Praktikum Framework Laravel
+
+Project latihan dari **Modul Praktikum Framework Laravel** (penyusun Rudy Eko Prasetya, S.Kom).
+
 
 ## Deskripsi
 
